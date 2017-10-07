@@ -1,0 +1,21 @@
+<div fxLayoutAlign="center center">
+  <form >
+    
+      <input type="text" #restaurantbox="ngForm" style="width: 350px; height:30px" placeholder="hungry? what do you wanna eat" aria-label="Number" mdInput [formControl]="restaurant" [mdAutocomplete]="restau">
+      <input type="text" #locationbox="ngForm" style="width: 350px; height:30px" placeholder="where?" aria-label="Number" mdInput [formControl]="location" [mdAutocomplete]="loc">
+      
+      <md-autocomplete #restau="mdAutocomplete">
+        <md-option *ngFor="let option of  filteredRestaurants | async" [value]="option">
+          {{ option}}
+        </md-option>
+      </md-autocomplete>
+      <md-autocomplete #loc="mdAutocomplete" >
+        <md-option *ngFor="let location of filteredLocations | async" [value]="location">
+          {{ location }}
+        </md-option>
+      </md-autocomplete>
+      <button md-raised-button (click)="SearchRestaurants(restaurantbox.value,locationbox.value)" >search</button>
+    
+  </form>
+
+</div>
